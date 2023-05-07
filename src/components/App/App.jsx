@@ -4,6 +4,7 @@ import { ContactList } from 'components/ContactList';
 import { ContactForm } from 'components/ContactForm';
 import { nanoid } from 'nanoid';
 import { Filter } from 'components/Filter';
+import { SectionTitle } from 'components/common/SectionTitle';
 
 export class App extends Component {
   state = {
@@ -22,11 +23,18 @@ export class App extends Component {
     }));
   };
 
-  addContact = ({name, number}) => {
+  addContact = ({ name, number }) => {
+    const isAdded = this.state.contacts.some((contact) => contact.name === name);
+
+    if (isAdded) {
+      alert(`${name} is already in contacts.`);
+      return
+    }
+
     const contact = {
       id: nanoid(),
       name,
-      number
+      number,
     };
 
     this.setState(({ contacts }) => ({
@@ -56,7 +64,7 @@ export class App extends Component {
         <h1>Phonebook</h1>
         <ContactForm onSubmit={this.addContact} />
 
-        <h2>Contacts</h2>
+        <SectionTitle title='Contacts'></SectionTitle>
         <Filter onChange={this.changeFilter} />
         <ContactList
           contacts={filteredContacts}
