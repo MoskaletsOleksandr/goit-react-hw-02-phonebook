@@ -24,11 +24,11 @@ export class App extends Component {
   };
 
   addContact = ({ name, number }) => {
-    const isAdded = this.state.contacts.some((contact) => contact.name === name);
+    const isAdded = this.state.contacts.some(contact => contact.name === name);
 
     if (isAdded) {
       alert(`${name} is already in contacts.`);
-      return
+      return;
     }
 
     const contact = {
@@ -59,10 +59,12 @@ export class App extends Component {
 
     return (
       <Container>
-        <h1>Phonebook</h1>
+        <SectionTitle title="Phonebook" as={'h1'}>
+          Phonebook
+        </SectionTitle>
         <ContactForm onSubmit={this.addContact} />
 
-        <SectionTitle title='Contacts'></SectionTitle>
+        <SectionTitle title="Contacts"></SectionTitle>
         <Filter onChange={this.changeFilter} />
         <ContactList
           contacts={filteredContacts}

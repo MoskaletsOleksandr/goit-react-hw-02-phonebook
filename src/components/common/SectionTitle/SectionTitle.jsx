@@ -6,5 +6,5 @@ export const SectionTitle = ({ title }) => {
 };
 
 SectionTitle.propTypes = {
-  title: PropTypes.string.isRequired
-}
+  title: PropTypes.string.isRequired,
+};
