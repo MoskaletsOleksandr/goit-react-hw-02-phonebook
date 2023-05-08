@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { Component } from 'react';
 import { Label, Input } from './Filter.styled';
 
@@ -10,4 +11,8 @@ export class Filter extends Component {
       </Label>
     );
   }
+}
+
+Filter.propTypes = {
+  onChange: PropTypes.func.isRequired
 }
